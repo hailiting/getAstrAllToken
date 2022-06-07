@@ -1,0 +1,37 @@
+{
+  "name": "shell",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "csvToJson": "ts-node  --compiler-options '{\"module\":\"commonjs\"}' ./scripts/merkle/csvToJson.ts",
+    "astrToken": "ts-node  --compiler-options '{\"module\":\"commonjs\"}'  ./scripts/astr_token/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Coinversation/shell.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Coinversation/shell/issues"
+  },
+  "homepage": "https://github.com/Coinversation/shell#readme",
+  "devDependencies": {
+    "@types/node": "^13.13.5",
+    "csvtojson": "^2.0.10",
+    "ethers": "^5.1.4",
+    "readline": "^1.3.0",
+    "ts-node": "^9.1.1",
+    "typescript": "4.6.4",
+    "web3": "1.7.3"
+  },
+  "dependencies": {
+    "@types/node-fetch": "^2.6.1",
+    "ethereumjs-util": "^7.1.3",
+    "fs": "0.0.1-security",
+    "node-fetch": "2.6.7",
+    "path": "^0.12.7"
+  }
+}
