@@ -28,10 +28,10 @@ function main() {
         });
         contractAddress = getArr(contractAddress, a.flat(Infinity));
         console.log(contractAddress.length);
-        writeFile(contractAddress);
+        writeFile(contractAddress, "data");
         // inWalletHandler(row, getPage(page, 1));
       } else {
-        writeFile(contractAddress);
+        writeFile(contractAddress, "data");
       }
     } catch (error) {
       console.log(error);

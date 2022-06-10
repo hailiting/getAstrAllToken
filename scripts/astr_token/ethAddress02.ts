@@ -1,8 +1,7 @@
 import Web3 from "web3";
 import Erc721 from "./abi/ERC721.json";
 import Erc1155 from "./abi/ERC1155.json";
-import erc721 from "./erc721AddressList.json";
-import erc1155 from "./erc1155AddressList.json";
+import erc721 from "./erc721AddressList_02.json";
 // import block from "./block.json";
 import {
   getPage,
@@ -15,24 +14,26 @@ import { AbiItem } from "web3-utils";
 // var web3 = new Web3('https://rinkeby.infura.io/'); //rinkeby测速网络节点地址，开发测试可以使用测试网络，快
 var web3 = new Web3("https://astar.api.onfinality.io/public"); //以太坊正式网络节点地址
 var erc721AddressList: any[] = erc721.list;
-var erc1155AddressList: any[] = erc1155.list;
+var erc1155AddressList = [];
 // @ts-ignore
 // var otherBlock: any[] = block;
 // var otherBlock: any[] = [];
 // @ts-ignore
 
-// ！！！！！ important orign start 1191418
-// start 1_194_103
-// end to 02 1_100_000
+// start 1_100_000
 // end  2806
-let i = 1122315;
-
 let transactionsI = 0;
-const blockNumberResult = 1_100_000;
+
+let i = 1_100_000;
+const blockNumberResult = 1_000_000;
+
 let transactionsMaxLength = 0;
 //获取当前区块高度
 function getBlockNumber() {
-  throughBlock();
+  web3.eth.getBlockNumber().then(function (result) {
+    console.log("blockNumber:" + result);
+    throughBlock();
+  });
 }
 
 //从创世区块0开始遍历
@@ -60,7 +61,7 @@ async function getBlock(blockNumber) {
       }, 200);
     }
   } catch (e) {
-    console.log(`error ${blockNumber}: ${blockNumber}`);
+    console.log(`error ${blockNumber}: `, e);
     if (blockNumber > blockNumberResult) {
       setTimeout(async () => {
         await getBlock(blockNumber);
@@ -116,7 +117,7 @@ async function getContract(address: string, blockNumber: number, txh: string) {
     if (_) {
       // console.log("isERC721: ", address);
       erc721AddressList.push(address);
-      writeFileNft(erc721AddressList, "erc721AddressList");
+      writeFileNft(erc721AddressList, "erc721AddressList_02");
       return;
     }
     const _contract = new web3.eth.Contract(Erc1155 as AbiItem[], address);
@@ -124,7 +125,7 @@ async function getContract(address: string, blockNumber: number, txh: string) {
     if (__) {
       // console.log("isERC1155: ", address);
       erc1155AddressList.push(address);
-      writeFileNft(erc1155AddressList, "erc1155AddressList");
+      writeFileNft(erc1155AddressList, "erc1155AddressList_02");
       return;
     }
   } catch (e) {
