@@ -29,7 +29,7 @@ var erc1155AddressList: any[] = erc1155.list;
 // let i = 700271;
 // const blockNumberResult = 700_000;
 
-let i = 497160;
+// let i = 497160;
 const blockNumberResult = 400_000;
 
 // doing
@@ -42,7 +42,6 @@ const blockNumberResult = 400_000;
 // 1_030_000-1_000_000
 // 800_000-700_000
 
-let transactionsI = 0;
 let transactionsMaxLength = 0;
 //获取当前区块高度
 function getBlockNumber() {
@@ -51,7 +50,7 @@ function getBlockNumber() {
 
 //从创世区块0开始遍历
 function throughBlock() {
-  getBlock(i);
+  getBlock(492594);
 }
 
 //获取当前区块的信息
@@ -63,12 +62,12 @@ async function getBlock(blockNumber) {
     if (result.transactions && result.transactions.length) {
       const transactions = result.transactions;
       transactionsMaxLength = transactions.length;
-      await getTransactions(transactions, transactionsI, blockNumber);
+      await getTransactions(transactions, 0, blockNumber);
     }
     const k = getPage(blockNumber, -1);
     if (k >= blockNumberResult) {
       setTimeout(async () => {
-        await getBlock(k);
+        process.nextTick(getBlock, k);
       }, 200);
     } else {
       return;
@@ -105,6 +104,7 @@ async function getTransactions(
         await getTransactions(transactions, k, blockNumber);
       }, 200);
     } else {
+      transactionsMaxLength = null;
     }
   } catch (e) {
     await getTransactions(transactions, block, blockNumber);

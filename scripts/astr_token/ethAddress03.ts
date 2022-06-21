@@ -24,7 +24,7 @@ var erc1155AddressList: any[] = erc1155.list;
 
 // start 1_000_000
 // end  2806
-let i = 540606;
+
 const blockNumberResult = 500_000;
 
 // doing
@@ -35,7 +35,6 @@ const blockNumberResult = 500_000;
 // done
 // 1_000_000-900_000
 
-let transactionsI = 0;
 let transactionsMaxLength = 0;
 //获取当前区块高度
 function getBlockNumber() {
@@ -48,7 +47,7 @@ function getBlockNumber() {
 
 //从创世区块0开始遍历
 function throughBlock() {
-  getBlock(i);
+  getBlock(532701);
 }
 
 //获取当前区块的信息
@@ -61,13 +60,13 @@ async function getBlock(blockNumber) {
       const transactions = result.transactions;
       transactionsMaxLength = transactions.length;
       setTimeout(async () => {
-        await getTransactions(transactions, transactionsI, blockNumber);
+        await getTransactions(transactions, 0, blockNumber);
       }, 200);
     }
     const k = getPage(blockNumber, -1);
     if (k >= blockNumberResult) {
       setTimeout(async () => {
-        await getBlock(k);
+        process.nextTick(getBlock, k);
       }, 200);
     }
   } catch (e) {
@@ -99,6 +98,8 @@ async function getTransactions(
       setTimeout(async () => {
         await getTransactions(transactions, k, blockNumber);
       }, 200);
+    } else {
+      transactionsMaxLength = null;
     }
   } catch (e) {
     await getTransactions(transactions, block, blockNumber);
