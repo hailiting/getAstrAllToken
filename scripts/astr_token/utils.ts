@@ -51,7 +51,11 @@ export function writeFile(json: any[], filename: string) {
   );
 }
 
-export function writeFileNft(json: any[], filename: string) {
+export function writeFileNft(
+  json: any[],
+  filename: string,
+  pre_length_number?: number
+) {
   // const data = uniqueKey(json, "address");
   if (!json || !json.length) {
     return;
@@ -61,7 +65,9 @@ export function writeFileNft(json: any[], filename: string) {
     length: data.length,
     list: data,
   };
-
+  if (pre_length_number && pre_length_number !== data.length) {
+    console.log("现在的长度：", data.length);
+  }
   fs.writeFile(
     path.resolve(__dirname, `./${filename}.json`),
     JSON.stringify(jsonStr),

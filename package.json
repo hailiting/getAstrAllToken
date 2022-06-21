@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "csvToJson": "ts-node  --compiler-options '{\"module\":\"commonjs\"}' ./scripts/merkle/csvToJson.ts",
-    "astrToken": "ts-node  --compiler-options '{\"module\":\"commonjs\"}'  ./scripts/astr_token/ethAddress.ts",
-    "astrToken01": "ts-node  --compiler-options '{\"module\":\"commonjs\"}'  ./scripts/astr_token/index.ts",
-    "astrToken02": "ts-node  --compiler-options '{\"module\":\"commonjs\"}'  ./scripts/astr_token/ethAddress02.ts",
-    "astrToken03": "ts-node  --compiler-options '{\"module\":\"commonjs\"}'  ./scripts/astr_token/ethAddress03.ts",
-    "astrToken04": "ts-node  --compiler-options '{\"module\":\"commonjs\"}'  ./scripts/astr_token/ethAddress04.ts"
+    "astrTokenUnique": "ts-node  --compiler-options '{\"module\":\"commonjs\"}'  ./scripts/astr_token/ethAddress_getUnique.ts",
+    "astrToken01": "ts-node  --compiler-options '{\"module\":\"commonjs\"}'  ./scripts/astr_token/index.ts ",
+    "astrToken": "ts-node  --compiler-options '{\"module\":\"commonjs\"}'  ./scripts/astr_token/ethAddress.ts  --max-new-space-size=1024",
+    "astrToken02": "ts-node  --compiler-options '{\"module\":\"commonjs\"}'  ./scripts/astr_token/ethAddress02.ts  --max-new-space-size=1024",
+    "astrToken03": "ts-node  --compiler-options '{\"module\":\"commonjs\"}'  ./scripts/astr_token/ethAddress03.ts  --max-new-space-size=1024",
+    "astrToken04": "ts-node  --compiler-options '{\"module\":\"commonjs\"}'  ./scripts/astr_token/ethAddress04.ts  --max-new-space-size=1024"
   },
   "repository": {
     "type": "git",

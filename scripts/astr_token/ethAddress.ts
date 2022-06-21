@@ -22,13 +22,27 @@ var erc1155AddressList: any[] = erc1155.list;
 // @ts-ignore
 
 // ！！！！！ important orign start 1191418
+// start02 1_273_453
 // start 1_194_103
-// end to 02 1_100_000
 // end  2806
-let i = 1122315;
+// let i = 1_010_000;
+// let i = 700271;
+// const blockNumberResult = 700_000;
+
+let i = 497160;
+const blockNumberResult = 400_000;
+
+// doing
+// 500_000-400_000
+
+// todo
+
+// done
+// 1_194_103-1_100_000
+// 1_030_000-1_000_000
+// 800_000-700_000
 
 let transactionsI = 0;
-const blockNumberResult = 1_100_000;
 let transactionsMaxLength = 0;
 //获取当前区块高度
 function getBlockNumber() {
@@ -49,22 +63,24 @@ async function getBlock(blockNumber) {
     if (result.transactions && result.transactions.length) {
       const transactions = result.transactions;
       transactionsMaxLength = transactions.length;
-      setTimeout(async () => {
-        await getTransactions(transactions, transactionsI, blockNumber);
-      }, 200);
+      await getTransactions(transactions, transactionsI, blockNumber);
     }
     const k = getPage(blockNumber, -1);
-    if (k > blockNumberResult) {
+    if (k >= blockNumberResult) {
       setTimeout(async () => {
         await getBlock(k);
       }, 200);
+    } else {
+      return;
     }
   } catch (e) {
     console.log(`error ${blockNumber}: ${blockNumber}`);
-    if (blockNumber > blockNumberResult) {
+    if (blockNumber >= blockNumberResult) {
       setTimeout(async () => {
         await getBlock(blockNumber);
       }, 200);
+    } else {
+      return;
     }
   }
 }
@@ -88,6 +104,7 @@ async function getTransactions(
       setTimeout(async () => {
         await getTransactions(transactions, k, blockNumber);
       }, 200);
+    } else {
     }
   } catch (e) {
     await getTransactions(transactions, block, blockNumber);

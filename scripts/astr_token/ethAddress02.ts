@@ -2,6 +2,7 @@ import Web3 from "web3";
 import Erc721 from "./abi/ERC721.json";
 import Erc1155 from "./abi/ERC1155.json";
 import erc721 from "./erc721AddressList_02.json";
+import erc1155 from "./erc1155AddressList_02.json";
 // import block from "./block.json";
 import {
   getPage,
@@ -11,21 +12,23 @@ import {
 } from "./utils";
 import { AbiItem } from "web3-utils";
 //设置web3对象
-// var web3 = new Web3('https://rinkeby.infura.io/'); //rinkeby测速网络节点地址，开发测试可以使用测试网络，快
 var web3 = new Web3("https://astar.api.onfinality.io/public"); //以太坊正式网络节点地址
 var erc721AddressList: any[] = erc721.list;
-var erc1155AddressList = [];
-// @ts-ignore
-// var otherBlock: any[] = block;
-// var otherBlock: any[] = [];
-// @ts-ignore
+var erc1155AddressList: any[] = erc1155.list;
 
 // start 1_100_000
 // end  2806
 let transactionsI = 0;
 
-let i = 1_100_000;
-const blockNumberResult = 1_000_000;
+let i = 608673;
+const blockNumberResult = 600_000;
+// doing
+// 700_000-600_000
+
+// todo
+
+// done
+// 1_100_000-1_030_000
 
 let transactionsMaxLength = 0;
 //获取当前区块高度
@@ -55,14 +58,14 @@ async function getBlock(blockNumber) {
       }, 200);
     }
     const k = getPage(blockNumber, -1);
-    if (k > blockNumberResult) {
+    if (k >= blockNumberResult) {
       setTimeout(async () => {
         await getBlock(k);
       }, 200);
     }
   } catch (e) {
     console.log(`error ${blockNumber}: `, e);
-    if (blockNumber > blockNumberResult) {
+    if (blockNumber >= blockNumberResult) {
       setTimeout(async () => {
         await getBlock(blockNumber);
       }, 200);

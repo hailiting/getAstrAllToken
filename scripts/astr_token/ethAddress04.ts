@@ -1,7 +1,8 @@
 import Web3 from "web3";
 import Erc721 from "./abi/ERC721.json";
 import Erc1155 from "./abi/ERC1155.json";
-// import erc721 from "./erc721AddressList.json";
+import erc721 from "./erc721AddressList_04.json";
+import erc1155 from "./erc1155AddressList_04.json";
 // import block from "./block.json";
 import {
   getPage,
@@ -13,19 +14,23 @@ import { AbiItem } from "web3-utils";
 //设置web3对象
 // var web3 = new Web3('https://rinkeby.infura.io/'); //rinkeby测速网络节点地址，开发测试可以使用测试网络，快
 var web3 = new Web3("https://astar.api.onfinality.io/public"); //以太坊正式网络节点地址
-var erc721AddressList: any[] = [];
-// var erc721AddressList: any[] = erc721.list;
-var erc1155AddressList = [];
+var erc721AddressList: any[] = erc721.list;
+var erc1155AddressList: any[] = erc1155.list;
 // @ts-ignore
 // var otherBlock: any[] = block;
 // var otherBlock: any[] = [];
 // @ts-ignore
 
-// start 900_000
-// end  2806
-let i = 900_000;
-const blockNumberResult = 800_000;
+let i = 1260085;
+const blockNumberResult = 1_194_103;
+// doing
+// 1_273_453-1_194_103
+// todo
 
+// done
+// 900_000-800_000
+
+// 1273453
 let transactionsI = 0;
 let transactionsMaxLength = 0;
 //获取当前区块高度
@@ -56,14 +61,14 @@ async function getBlock(blockNumber) {
       }, 200);
     }
     const k = getPage(blockNumber, -1);
-    if (k > blockNumberResult) {
+    if (k >= blockNumberResult) {
       setTimeout(async () => {
         await getBlock(k);
       }, 200);
     }
   } catch (e) {
     console.log(`error ${blockNumber}: `, e);
-    if (blockNumber > blockNumberResult) {
+    if (blockNumber >= blockNumberResult) {
       setTimeout(async () => {
         await getBlock(blockNumber);
       }, 200);
@@ -118,7 +123,7 @@ async function getContract(address: string, blockNumber: number, txh: string) {
     if (_) {
       // console.log("isERC721: ", address);
       erc721AddressList.push(address);
-      writeFileNft(erc721AddressList, "erc721AddressList_02");
+      writeFileNft(erc721AddressList, "erc721AddressList_04");
       return;
     }
     const _contract = new web3.eth.Contract(Erc1155 as AbiItem[], address);
