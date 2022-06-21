@@ -20,7 +20,7 @@ var erc1155AddressList: any[] = erc1155.list;
 // end  2806
 // let transactionsI = 0;
 
-const blockNumberResult = 600_000;
+const blockNumberResult = 300_000;
 // doing
 // 700_000-600_000
 
@@ -37,10 +37,16 @@ function getBlockNumber() {
     throughBlock();
   });
 }
+// doing
+// 400_000-300_000
+
+// todo
+
+// done
 
 //从创世区块0开始遍历
 function throughBlock() {
-  getBlock(601215);
+  getBlock(400_000);
 }
 
 //获取当前区块的信息
