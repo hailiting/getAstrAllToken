@@ -47,7 +47,7 @@ function getBlockNumber() {
 
 //从创世区块0开始遍历
 function throughBlock() {
-  getBlock(521877);
+  getBlock(502027);
 }
 
 //获取当前区块的信息
