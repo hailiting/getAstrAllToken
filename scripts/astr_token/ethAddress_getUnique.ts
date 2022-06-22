@@ -14,6 +14,7 @@ function ethAddress_getUnique() {
   // console.log("6.15原始值：", 131);
   // console.log("6.16原始值：", 178);
   // console.log("6.17原始值：", 212);
+  // console.log("6.22原始值：", 326);
 
   console.log("上一个长度：", ethAddressUnique.list.length);
   const erc721AddressList = [

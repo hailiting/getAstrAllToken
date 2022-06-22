@@ -25,15 +25,16 @@ var erc1155AddressList: any[] = erc1155.list;
 // start 1_000_000
 // end  2806
 
-const blockNumberResult = 500_000;
+const blockNumberResult = 200_000;
 
 // doing
-// 600_000-500_000
+// 300_000-200_000
 
 // todo
 
 // done
 // 1_000_000-900_000
+// 600_000-500_000
 
 let transactionsMaxLength = 0;
 //获取当前区块高度
@@ -47,7 +48,7 @@ function getBlockNumber() {
 
 //从创世区块0开始遍历
 function throughBlock() {
-  getBlock(502027);
+  getBlock(256254);
 }
 
 //获取当前区块的信息

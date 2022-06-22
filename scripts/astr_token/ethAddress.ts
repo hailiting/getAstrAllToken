@@ -22,8 +22,7 @@ var erc1155AddressList: any[] = erc1155.list;
 // @ts-ignore
 
 // ！！！！！ important orign start 1191418
-// start02 1_273_453
-// start 1_194_103
+// start 1_273_453
 // end  2806
 // let i = 1_010_000;
 // let i = 700271;
@@ -50,7 +49,7 @@ function getBlockNumber() {
 
 //从创世区块0开始遍历
 function throughBlock() {
-  getBlock(470318);
+  getBlock(441646);
 }
 
 //获取当前区块的信息
