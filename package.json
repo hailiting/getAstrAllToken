@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "gitSubsquidClone": "ts-node  --compiler-options '{\"module\":\"commonjs\"}'  ./scripts/gitSubsquidClone/index.ts",
     "csvToJson": "ts-node  --compiler-options '{\"module\":\"commonjs\"}' ./scripts/merkle/csvToJson.ts",
     "astrTokenUnique": "ts-node  --compiler-options '{\"module\":\"commonjs\"}'  ./scripts/astr_token/ethAddress_getUnique.ts",
     "astrToken01": "ts-node  --compiler-options '{\"module\":\"commonjs\"}'  ./scripts/astr_token/index.ts ",

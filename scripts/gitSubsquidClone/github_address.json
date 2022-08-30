@@ -1,0 +1,16 @@
+{
+  "length": 11,
+  "list": [
+    "git@github.com:R312r0/orcus-squid-evm.git",
+    "git@github.com:belopash/subsquid-subwallet.git",
+    "git@github.com:ma-shulgin/crust.git",
+    "git@github.com:subsquid/parity.git",
+    "git@github.com:ma-shulgin/karura-swap.git",
+    "git@github.com:subsquid/squid-external-api-example.git",
+    "git@github.com:subsquid/squid-template.git",
+    "git@github.com:subsquid/subsquid-deepdao.git",
+    "git@github.com:eshaben/squid-moonriver-transfers.git",
+    "git@github.com:JiaXun2000/Astar-Degens.git",
+    "git@github.com:eshaben/squid-moonbeam-transfers.git"
+  ]
+}
